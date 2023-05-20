@@ -4,10 +4,8 @@ import sys
 import shutil
 
 if __name__ == "__main__":
-    OS_TYPE = "linux"
-    PROJECT_TYPE = "laravel"
-    APP_NAME = "storemate-erp"
-    APP_URL = "stm-iservice.com"
+    # python generate-conf.py linux laravel stm-iservice stm-iservice.com
+    (OS_TYPE, PROJECT_TYPE, APP_NAME, APP_URL) = sys.argv[1:]
 
     if os.path.isdir("dist"):
         shutil.rmtree("dist")
