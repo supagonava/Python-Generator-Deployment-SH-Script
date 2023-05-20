@@ -18,17 +18,17 @@ gunicorn --bind 0.0.0.0:8000 config.wsgi
 
 
 # Config NGINX
-cp deployments/nginx.prod.conf /etc/nginx/sites-available/ttmcrane-stock
-sudo ln -s /etc/nginx/sites-available/ttmcrane-stock /etc/nginx/sites-enabled
+cp deployments/nginx.prod.conf /etc/nginx/sites-available/nginx.prod.conf
+sudo ln -s /etc/nginx/sites-available/nginx.prod.conf /etc/nginx/sites-enabled
 
 # Install Supervisor
 sudo apt-get install supervisor
-sudo rm /etc/supervisor/conf.d/ttmcrane-stock.conf
-sudo cp deployments/supervisor.prod.conf /etc/supervisor/conf.d/ttmcrane-stock.conf
+sudo rm /etc/supervisor/conf.d/supervisor.conf
+sudo cp deployments/supervisor.prod.conf /etc/supervisor/conf.d/supervisor.conf
 
 sudo supervisorctl reread
 sudo supervisorctl update
-sudo supervisorctl start ttmcrane-stock
+sudo supervisorctl start app_name
 
 # Reload code after deploy
-sudo nginx -t && systemctl restart nginx && supervisorctl restart ttmcrane-stock
+sudo nginx -t && systemctl restart nginx && supervisorctl restart app_name
