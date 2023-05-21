@@ -2,6 +2,7 @@ sudo apt-get update
 sudo apt-get install -y pkg-config libcairo2-dev libgirepository1.0-dev
 sudo apt-get install python3-pip python3-dev libpq-dev nginx curl
 sudo apt install certbot python3-certbot-nginx
+sudo apt install ttf-mscorefonts-installer
 
 sudo ufw enable
 sudo ufw allow 22 && ufw allow 80 && ufw allow 443 && ufw allow 3306 && ufw allow 6379
