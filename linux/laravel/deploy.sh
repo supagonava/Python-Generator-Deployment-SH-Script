@@ -1,8 +1,7 @@
 # Copy config file
-cp /var/wwwroot/%APP_NAME%/deployments/site.prod.conf /etc/nginx/sites-available/site.prod.conf
+cp /var/wwwroot/%APP_NAME%/deployments/site.prod.conf /etc/nginx/sites-available/default
 cp /var/wwwroot/%APP_NAME%/deployments/nginx.prod.conf /etc/nginx/nginx.conf
-sudo unlink /etc/nginx/sites-enabled/site.prod.conf
-sudo ln -s /etc/nginx/sites-available/site.prod.conf /etc/nginx/sites-enabled
+sudo ln -s /etc/nginx/sites-available/default /etc/nginx/sites-enabled
 
 # sudo rm /etc/supervisor/conf.d/supervisor.conf
 sudo cp /var/wwwroot/%APP_NAME%/deployments/supervisor.prod.conf /etc/supervisor/conf.d/supervisor.conf
