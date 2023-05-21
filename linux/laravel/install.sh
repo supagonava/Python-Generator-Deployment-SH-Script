@@ -20,13 +20,13 @@ mysql_secure_installation &&
 mysql -u root -p
 
 # Mysql -2
-CREATE USER 'dbadmin001'@'%' IDENTIFIED BY '#db@dm_in2023';
-GRANT ALL PRIVILEGES ON *.* TO 'dbadmin001'@'%';
+CREATE USER 'dbadmin_root'@'%' IDENTIFIED BY '#db@dm_in2023';
+GRANT ALL PRIVILEGES ON *.* TO 'dbadmin_root'@'%';
 FLUSH PRIVILEGES;
 exit
 
-ALTER USER 'dbadmin001'@'%' IDENTIFIED WITH mysql_native_password BY '#db@dm_in2023';
-GRANT ALL PRIVILEGES ON *.* TO 'dbadmin001'@'%';
+ALTER USER 'dbadmin_root'@'%' IDENTIFIED WITH mysql_native_password BY '#db@dm_in2023';
+GRANT ALL PRIVILEGES ON *.* TO 'dbadmin_root'@'%';
 FLUSH PRIVILEGES;
 exit
 
