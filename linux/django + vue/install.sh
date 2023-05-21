@@ -31,7 +31,7 @@ sudo cp deployments/supervisor.prod.conf /etc/supervisor/conf.d/supervisor.conf
 
 sudo supervisorctl reread
 sudo supervisorctl update
-sudo supervisorctl start app_name
+sudo supervisorctl start %APP_NAME%
 
 # Reload code after deploy
-sudo nginx -t && systemctl restart nginx && supervisorctl restart app_name
+sudo nginx -t && systemctl restart nginx && supervisorctl restart %APP_NAME%
