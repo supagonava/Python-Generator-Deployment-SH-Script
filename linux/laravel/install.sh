@@ -12,20 +12,27 @@ sudo apt-get install supervisor
 
 # PHP 8.1
 sudo add-apt-repository ppa:ondrej/php
-sudo apt-get install php8.1 php8.1-cli php8.1-common php8.1-curl php8.1-gd php8.1-mbstring php8.1-mysql php8.1-xml php8.1-zip php8.1-fpm
-sudo a2enmod proxy_fcgi setenvif
-sudo a2enconf php8.1-fpm
+sudo apt-get install php8.1 php8.1-cli php8.1-common php8.1-curl php8.1-gd php8.1-mbstring php8.1-mysql php8.1-xml php8.1-zip php8.1-fpm php8.1-odbc php8.1-soap
 
-# Mysql
+# Mysql -1
 sudo apt-get install mysql-server &&
 mysql_secure_installation &&
 mysql -u root -p
 
-# After the last command, you'll be in the MySQL shell. Execute the following commands there:
-CREATE USER 'dbadmin'@'%' IDENTIFIED BY '#db@dm_in2023';
-GRANT ALL PRIVILEGES ON *.* TO 'dbadmin'@'%';
+# Mysql -2
+CREATE USER 'dbadmin001'@'%' IDENTIFIED BY '#db@dm_in2023';
+GRANT ALL PRIVILEGES ON *.* TO 'dbadmin001'@'%';
 FLUSH PRIVILEGES;
 exit
+
+ALTER USER 'dbadmin001'@'%' IDENTIFIED WITH mysql_native_password BY '#db@dm_in2023';
+GRANT ALL PRIVILEGES ON *.* TO 'dbadmin001'@'%';
+FLUSH PRIVILEGES;
+exit
+
+# Mysql -3 Allow online
+sudo nano /etc/mysql/mysql.conf.d/mysqld.cnf
+# -> bind-address = 0.0.0.0
 
 # Composer
 php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
@@ -34,8 +41,4 @@ php composer-setup.php
 php -r "unlink('composer-setup.php');"
 sudo mv composer.phar /usr/local/bin/composer
 
-# PHP Myadmin
-sudo apt-get install phpmyadmin
-sudo unlink /var/wwwroot/phpmyadmin
-sudo ln -s /usr/share/phpmyadmin /var/wwwroot/phpmyadmin
-sudo cp -r /usr/share/phpmyadmin /var/wwwroot/phpmyadmin
+
