@@ -8,8 +8,10 @@ apt install certbot python3-certbot-nginx -y
 sudo apt-get install supervisor
 
 # PHP 8.1
-sudo add-apt-repository ppa:ondrej/php &&
-apt-get install php8.1 php8.1-cli php8.1-common php8.1-curl php8.1-gd php8.1-mbstring php8.1-mysql php8.1-xml php8.1-zip
+sudo add-apt-repository ppa:ondrej/php
+sudo apt-get install php8.1 php8.1-cli php8.1-common php8.1-curl php8.1-gd php8.1-mbstring php8.1-mysql php8.1-xml php8.1-zip php8.1-fpm
+sudo a2enmod proxy_fcgi setenvif
+sudo a2enconf php8.1-fpm
 
 # Mysql
 sudo apt-get install mysql-server &&
@@ -31,14 +33,20 @@ sudo mv composer.phar /usr/local/bin/composer
 
 # PHP Myadmin
 sudo apt-get install phpmyadmin
+sudo unlink /var/wwwroot/phpmyadmin
 sudo ln -s /usr/share/phpmyadmin /var/wwwroot/phpmyadmin
 
 # Copy config file
+cd /var/wwwroot/%APP_NAME%
 cp deployments/nginx.prod.conf /etc/nginx/sites-available/nginx.prod.conf
-sudo ln -s /etc/nginx/sites-available/nginx.prod.conf /etc/nginx/sites-enabled
 sudo rm /etc/supervisor/conf.d/supervisor.conf
 sudo cp deployments/supervisor.prod.conf /etc/supervisor/conf.d/supervisor.conf
+sudo unlink /etc/nginx/sites-enabled/nginx.prod.conf
+sudo ln -s /etc/nginx/sites-available/nginx.prod.conf /etc/nginx/sites-enabled
 
-# Restart Worker
-sudo service supervisor restart
-sudo service nginx restart
+
+# Disable apache2
+sudo service apache2 stop && systemctl disable apache2 && service nginx start
+
+# Restart
+sudo service supervisor restart && service nginx restart
