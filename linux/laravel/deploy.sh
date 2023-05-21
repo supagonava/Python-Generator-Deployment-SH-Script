@@ -13,6 +13,8 @@ sudo cp /var/wwwroot/%APP_NAME%/deployments/supervisor.prod.conf /etc/supervisor
 
 sudo chown -R www-data:www-data /var/wwwroot/%APP_NAME%/public
 sudo chown -R www-data:www-data /var/wwwroot/%APP_NAME%/storage
+sudo chown -R www-data:www-data /var/wwwroot/%APP_NAME%/vendor
+
 sudo chown -R www-data:www-data /var/wwwroot/phpmyadmin
 systemctl restart php8.1-fpm
 sudo service supervisor restart && service nginx restart
