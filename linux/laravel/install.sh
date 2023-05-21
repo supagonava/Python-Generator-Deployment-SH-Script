@@ -22,8 +22,8 @@ mysql_secure_installation &&
 mysql -u root -p
 
 # After the last command, you'll be in the MySQL shell. Execute the following commands there:
-CREATE USER 'dbadmin'@'localhost' IDENTIFIED BY '#db@dm_in2023';
-GRANT ALL PRIVILEGES ON *.* TO 'dbadmin'@'localhost';
+CREATE USER 'dbadmin'@'%' IDENTIFIED BY '#db@dm_in2023';
+GRANT ALL PRIVILEGES ON *.* TO 'dbadmin'@'%';
 FLUSH PRIVILEGES;
 exit
 
@@ -38,18 +38,4 @@ sudo mv composer.phar /usr/local/bin/composer
 sudo apt-get install phpmyadmin
 sudo unlink /var/wwwroot/phpmyadmin
 sudo ln -s /usr/share/phpmyadmin /var/wwwroot/phpmyadmin
-
-# Copy config file
-cd /var/wwwroot/%APP_NAME%
-cp deployments/nginx.prod.conf /etc/nginx/sites-available/nginx.prod.conf
-sudo rm /etc/supervisor/conf.d/supervisor.conf
-sudo cp deployments/supervisor.prod.conf /etc/supervisor/conf.d/supervisor.conf
-sudo unlink /etc/nginx/sites-enabled/nginx.prod.conf
-sudo ln -s /etc/nginx/sites-available/nginx.prod.conf /etc/nginx/sites-enabled
-
-
-# Disable apache2
-sudo service apache2 stop && systemctl disable apache2 && service nginx start
-
-# Restart
-sudo service supervisor restart && service nginx restart
+sudo cp -r /usr/share/phpmyadmin /var/wwwroot/phpmyadmin
