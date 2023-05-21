@@ -4,6 +4,9 @@ apt-get install -y pkg-config libcairo2-dev libgirepository1.0-dev &&
 apt-get install python3-pip python3-dev libpq-dev nginx curl &&
 apt install certbot python3-certbot-nginx -y
 
+sudo ufw enable
+sudo ufw allow 22 && ufw allow 80 && ufw allow 443 && ufw allow 3306 && ufw allow 6379
+
 # Supervisor
 sudo apt-get install supervisor
 
