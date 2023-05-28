@@ -22,8 +22,8 @@ gunicorn --bind 0.0.0.0:8000 config.wsgi
 
 
 # Config NGINX
-cp deployments/nginx.prod.conf /etc/nginx/sites-available/nginx.prod.conf
-sudo ln -s /etc/nginx/sites-available/nginx.prod.conf /etc/nginx/sites-enabled
+cp deployments/nginx.prod.conf /etc/nginx/sites-available/%APP_NAME%.conf
+sudo ln -s /etc/nginx/sites-available/%APP_NAME%.conf /etc/nginx/sites-enabled
 
 # Install Supervisor
 sudo apt-get install supervisor
