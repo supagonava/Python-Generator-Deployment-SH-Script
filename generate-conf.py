@@ -16,7 +16,7 @@ if __name__ == "__main__":
         file_name = file.split("/")[-1]
         file_name = file_name.split(".")
         file_name.insert(1, "prod")
-        
+
         file_name = ".".join(file_name)
         new_file = new_path + "/" + file_name
 
@@ -26,5 +26,6 @@ if __name__ == "__main__":
         contentstr = open(file, "r").read()
         contentstr: str = contentstr.replace("%APP_NAME%", APP_NAME)
         contentstr: str = contentstr.replace("%APP_URL%", APP_URL)
+        contentstr: str = contentstr.replace("%BASE_DIR%", "/var/wwwroot/" + APP_NAME)
 
         open(new_file, "w").write(contentstr)
