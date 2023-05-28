@@ -28,7 +28,7 @@ sudo ln -s /etc/nginx/sites-available/%APP_NAME%.conf /etc/nginx/sites-enabled
 # Install Supervisor
 sudo apt-get install supervisor
 sudo rm /etc/supervisor/conf.d/supervisor.conf
-sudo cp deployments/supervisor.prod.conf /etc/supervisor/conf.d/supervisor.conf
+sudo cp deployments/supervisor.prod.conf /etc/supervisor/conf.d/%APP_NAME%.conf
 
 sudo supervisorctl reread
 sudo supervisorctl update
