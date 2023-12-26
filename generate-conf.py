@@ -4,7 +4,7 @@ import sys
 import shutil
 
 if __name__ == "__main__":
-    # python generate-conf.py linux dotnet excel2pdf excel2pdf.stm-iservice.com
+    # python generate-conf.py linux dotnet excel2pdf excel2pdf.ttm-erp.com
     (OS_TYPE, PROJECT_TYPE, APP_NAME, APP_URL) = sys.argv[1:]
 
     if os.path.isdir("deployments"):

@@ -1,7 +1,13 @@
 # nginx if not install
 sudo apt-get update
 sudo apt-get install -y nginx
+
+# font install
 sudo apt install ttf-mscorefonts-installer
+sudo apt-get install fontforge
+sudo apt-get install cabextract
+wget https://gist.githubusercontent.com/maxwelleite/10774746/raw/ttf-vista-fonts-installer.sh -q -O - | sudo bash
+
 
 # Supervisor
 sudo apt-get install supervisor
