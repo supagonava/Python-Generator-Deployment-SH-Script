@@ -18,16 +18,17 @@ sudo apt-get install php8.1 php8.1-cli php8.1-common php8.1-curl php8.1-gd php8.
 # Mysql -1
 sudo apt-get install mysql-server &&
 mysql_secure_installation &&
-mysql -u root -p
+sudo mysql -u root -p
 
 # Mysql -2
-CREATE USER 'dbadmin_root'@'%' IDENTIFIED BY '#db@dm_in2023';
-GRANT ALL PRIVILEGES ON *.* TO 'dbadmin_root'@'%';
+CREATE USER 'dbadmin'@'%' IDENTIFIED BY 'New#Complex@Password2023';
+GRANT ALL PRIVILEGES ON *.* TO 'dbadmin'@'%';
 FLUSH PRIVILEGES;
 exit
 
-ALTER USER 'dbadmin_root'@'%' IDENTIFIED WITH mysql_native_password BY '#db@dm_in2023';
-GRANT ALL PRIVILEGES ON *.* TO 'dbadmin_root'@'%';
+# Change Password
+ALTER USER 'dbadmin'@'%' IDENTIFIED WITH mysql_native_password BY 'New#Complex@Password2023';
+GRANT ALL PRIVILEGES ON *.* TO 'dbadmin'@'%';
 FLUSH PRIVILEGES;
 exit
 

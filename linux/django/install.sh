@@ -1,4 +1,8 @@
 sudo apt-get update
+
+sudo apt-get install python3.10-distutils
+wget https://bootstrap.pypa.io/get-pip.py
+sudo python3.10 get-pip.py
 sudo apt-get install -y pkg-config libcairo2-dev libgirepository1.0-dev
 sudo apt-get install python3-pip python3-dev libpq-dev nginx curl
 sudo apt install certbot python3-certbot-nginx
